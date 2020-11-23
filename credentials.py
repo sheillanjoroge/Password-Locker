@@ -58,3 +58,31 @@ class Credentials:
                     'password': self.get_password() 
                 })
                 return True
+    def check_account_exist(self):
+        '''
+        Returns True of False if the Credential exists for the user.
+        '''
+        with open(Credential.database, 'r')as read_file:
+            fields = ['account', 'email', 'password']
+            read_data = csv.DictReader(read_file, fieldnames=fields)
+            for line in read_data:
+                if line['account'] == self.get_account() and line['email'] == self.get_email():
+                   return True
+            return False
+
+    @classmethod
+    def check_an_account_exist(cls, account, email):
+        '''
+        check_account_exist but not called from a credential instance.
+        '''
+
+        db_present = os.path.isfile(Credential.database)
+        if db_present:
+            with open(Credential.database, 'r')as read_file:
+                fields = ['account', 'email', 'password']
+                file_data = csv.DictReader(read_file, fieldnames=fields)
+                for line in file_data:
+                    if line['account'] == account and line['email'] == email:
+                        return True
+                return False
+        else: return False
