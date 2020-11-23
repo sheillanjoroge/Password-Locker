@@ -86,3 +86,33 @@ class Credentials:
                         return True
                 return False
         else: return False
+
+    @classmethod
+    def display_accounts(cls, email):
+        '''
+        Search the db and return a users accounts that they have created.
+        '''
+        file_exist = os.path.isfile(Credential.database)
+        all_user_accounts = []
+        if file_exist:
+            with open(Credential.database, 'r')as accounts_file:
+                all_accounts = csv.DictReader(accounts_file)
+                for account in all_accounts:
+                    if account['email'] == email:
+                        all_user_accounts.append(account)
+                return all_user_accounts
+        else:
+            return all_user_accounts
+
+    @classmethod
+    def randomizer(cls):
+        '''
+        Generates a password
+        '''
+        password = ''
+        alphabets = "ab(cdefg^hi%jklm+no#pqrs@tuv)wxyz!*_"
+        special ='!^%@(*)#_+@'
+        for i in range(8):
+            random_number = random.randrange(1, 26)
+            password += alphabets[random_number]
+        return password        
