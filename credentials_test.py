@@ -11,8 +11,15 @@ def setUp(self):
     '''
     self.test_user_credential = Credential('sheillan.njoroge@gmail.com', 'instagram', 'zay22')
     self.test_other_user_credential = Credential('sheillan.njoroge@gmail.com', 'twitter', 'zay22')
+
+def tearDown(self):
+        '''
+        Delete the credentials database after every test.
+        '''
+        if os.path.isfile(Credential.database):
+            os.remove(Credential.database)
  
- def test_init(self):
+def test_init(self):
      '''
      test_init test case to test if the object is initialized properly
      '''
