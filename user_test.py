@@ -1,7 +1,7 @@
 import unittest
-from users import User
-import csv
-import os
+from user import User
+import csv, os
+
 class TestUsers(unittest.TestCase):
 
     def setUp(self):

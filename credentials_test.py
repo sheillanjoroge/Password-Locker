@@ -1,5 +1,7 @@
 import unittest # Importing the unittest module
 from credentials import Credentials # Importing the credentials class
+from user import User
+import csv, os
 
 Class TestCredentials(unittest.TestCase):
 
