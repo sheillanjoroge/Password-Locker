@@ -100,3 +100,28 @@ def test_display_accounts(self):
                 return False
         
         self.assertTrue(a_credential_exist)            
+
+
+def test_delete_account(self):
+        '''
+        Tests and ensures delete op occurs successfully.
+        '''
+        self.test_user_credential.create_credential()
+        account_created = Credential.check_an_account_exist(self.test_user_credential.get_email(), self.test_user_credential.get_account())
+        is_deleted = Credential.delete_account(self.test_other_user_credential.get_email(), self.test_other_user_credential.get_account())
+
+        list_of_credentials = Credential.display_accounts(self.test_user_credential.get_email())
+
+        account_exist = False
+        for account in list_of_credentials:
+            if account['account'] == self.test_user_credential.get_account():
+                account_exist = False
+            else:
+                account_exist = True
+        self.assertTrue(account_created)
+        self.assertTrue(is_deleted)
+        self.assertFalse(account_exist)
+
+
+if __name__ == '__main__':
+    unittest.main()
