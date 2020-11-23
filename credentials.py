@@ -38,7 +38,7 @@ class Credentials:
         '''
 
         file_exist = os.path.isfile(Credential.database)
-        with open(Credential.database, 'a')as file_to_write:
+        with open(Credentials.database, 'a')as file_to_write:
             if not file_exist:
                 fields = ['account', 'email', 'password']
                 file_data = csv.DictWriter(file_to_write, fieldnames=fields, lineterminator='\n')
@@ -62,7 +62,7 @@ class Credentials:
         '''
         Returns True of False if the Credential exists for the user.
         '''
-        with open(Credential.database, 'r')as read_file:
+        with open(Credentials.database, 'r')as read_file:
             fields = ['account', 'email', 'password']
             read_data = csv.DictReader(read_file, fieldnames=fields)
             for line in read_data:
@@ -76,9 +76,9 @@ class Credentials:
         check_account_exist but not called from a credential instance.
         '''
 
-        db_present = os.path.isfile(Credential.database)
+        db_present = os.path.isfile(Credentials.database)
         if db_present:
-            with open(Credential.database, 'r')as read_file:
+            with open(Credentials.database, 'r')as read_file:
                 fields = ['account', 'email', 'password']
                 file_data = csv.DictReader(read_file, fieldnames=fields)
                 for line in file_data:
@@ -92,10 +92,10 @@ class Credentials:
         '''
         Search the db and return a users accounts that they have created.
         '''
-        file_exist = os.path.isfile(Credential.database)
+        file_exist = os.path.isfile(Credentials.database)
         all_user_accounts = []
         if file_exist:
-            with open(Credential.database, 'r')as accounts_file:
+            with open(Credentials.database, 'r')as accounts_file:
                 all_accounts = csv.DictReader(accounts_file)
                 for account in all_accounts:
                     if account['email'] == email:
@@ -123,10 +123,10 @@ class Credentials:
         '''
         Search the db and return a users accounts that they have created.
         '''
-        file_exist = os.path.isfile(Credential.database)
+        file_exist = os.path.isfile(Credentials.database)
         all_user_accounts = []
         if file_exist:
-            with open(Credential.database, 'r')as accounts_file:
+            with open(Credentials.database, 'r')as accounts_file:
                 all_accounts = csv.DictReader(accounts_file)
                 for account in all_accounts:
                     if account['email'] == email:
@@ -140,10 +140,10 @@ class Credentials:
         '''
         Search the db and delete a users account
         '''
-        db_exists = os.path.isfile(Credential.database)
+        db_exists = os.path.isfile(Credentials.database)
         if db_exists:
             accounts_non_delete = []
-            with open(Credential.database, 'r')as cred_file:
+            with open(Credentials.database, 'r')as cred_file:
                 cred_data = csv.DictReader(cred_file)
                 print(f'Account to delete is {account} and email id {email}')
                 for account in cred_data:
@@ -151,7 +151,7 @@ class Credentials:
                         print(f'Appended {account}')
                         accounts_non_delete.append(account)
             
-            with open(Credential.database, 'w')as cred_file_write:
+            with open(Credentials.database, 'w')as cred_file_write:
                 fields = ['account', 'email', 'password']
                 non_delete_accounts = csv.DictWriter(cred_file_write, fieldnames=fields, lineterminator='\n')
                 non_delete_accounts.writeheader()
