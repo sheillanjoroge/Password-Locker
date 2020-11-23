@@ -29,14 +29,18 @@ def test_init(self):
      self.assertEqual('zay22', self.test_user_credential.get_password())
 
 def test_create_credentials_file(self):
-        '''Test that the db is created successfully.'''
+        '''
+        Test that the db is created successfully.
+        '''
 
         with open(Credential.database, 'w+') as test_file:
             file_exists = os.path.isfile(Credential.database)
             self.assertTrue(file_exists)
 
 def test_record_a_credential(self):
-        '''Test that a credential is always created and stored in the db successfully'''
+        '''
+        Test that a credential is always created and stored in the db successfully
+        '''
 
         self.test_user_credential.create_credential()
         self.test_other_user_credential.create_credential()
@@ -51,3 +55,48 @@ def test_record_a_credential(self):
                     self.add_success = True 
    
             self.assertTrue(self.add_success)
+
+def test_check_account_exist(self):
+        '''
+        From the instance method. Search the db and ensure an account exists
+        '''
+        self.test_user_credential.create_credential()
+
+        account_exist = self.test_user_credential.check_account_exist()
+        self.assertTrue(account_exist)
+
+def test_check_account_exist(self):
+        '''
+        From the class method. Search the db and ensure an account exists
+        '''
+        self.test_user_credential.create_credential()
+
+        account_exist = Credential.check_an_account_exist(self.test_user_credential.get_email(), self.test_user_credential.get_account())
+        self.assertTrue(account_exist)
+
+def test_check_account_exist_without_db(self):
+        '''
+        Tests and ensures check_an_account_exist() does not return True if the db is nonexistent.
+        '''
+        account_exist = Credential.check_an_account_exist(self.test_user_credential.get_email(), self.test_user_credential.get_account())
+        self.assertFalse(account_exist)
+
+def test_randomizer(self):
+        '''
+        Tests and ensures the radomizer() generates a legit passwords
+        '''
+        random_password = Credential.randomizer()
+        self.assertGreater(len(random_password), 7)
+        self.assertLess(len(random_password), 9)
+
+def test_display_accounts(self):
+        self.test_other_user_credential.create_credential()
+        self.test_user_credential.create_credential()
+
+        list_of_credentials = Credential.display_accounts(self.test_user_credential.get_email())
+        for a_credential in list_of_credentials:
+            a_credential_exist = Credential.check_an_account_exist(a_credential['email'], a_credential['account'] )
+            if not a_credential_exist:
+                return False
+        
+        self.assertTrue(a_credential_exist)            
