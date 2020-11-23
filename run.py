@@ -70,7 +70,7 @@ def main():
     head = ' ********************'
     while home:
         print(head)
-        print('|\t\t\t\t\t\t\t\t\t\t\t\t| \n|\t\t\t\tWELCOME\tTO\tPASSWORD_LOCKER\t\t\t\t\t\t|\n|\t\t\t\t\t\t\t\t\t\t\t\t|\n|\t\t\t*MANGE ALL YOUR PASSWORDS IN ONE PLACE*\t\t\t\t\t|\n|\t\t\t\t\t\t\t\t\t\t\t\t|\n|\tSelect a number to continue...\t\t\t\t\t\t\t\t|\n|1. Join PASWORD_LOCKER\t\t\t\t\t\t\t\t\t\t|\n|2. Login to PASSWORD_LOCKER\t\t\t\t\t\t\t\t\t\t|\n|3. Exit PASSWORD_LOCKER\t\t\t\t\t\t\t\t\t\t|\n|\t\t\t\t\t\t\t\t\t\t\t\t|')
+        print('|\t\t\t\t\t\t\t\t\t\t\t\t| \n|\t\t\t\tWELCOME\tTO\tPASSWORD_LOCKER\t\t\t\t\t\t|\n|\t\t\t\t\t\t\t\t\t\t\t\t|\n|\t\t\t*MANAGE ALL YOUR PASSWORDS IN ONE PLACE*\t\t\t\t\t|\n|\t\t\t\t\t\t\t\t\t\t\t\t|\n|\tSelect a number to continue...\t\t\t\t\t\t\t\t|\n|1. Join PASWORD_LOCKER\t\t\t\t\t\t\t\t\t\t|\n|2. Login to PASSWORD_LOCKER\t\t\t\t\t\t\t\t\t\t|\n|3. Exit PASSWORD_LOCKER\t\t\t\t\t\t\t\t\t\t|\n|\t\t\t\t\t\t\t\t\t\t\t\t|')
         print(head)
 
         option = input()
