@@ -149,7 +149,7 @@ def main():
                             print('------------------------')
                             perform = input()
                             if perform == '1':
-                                all_acounts = Credential.display_accounts(email)
+                                all_acounts = Credentials.display_accounts(email)
                                 print('-------------------')
                                 print('|\t\t\t\t\t\t\t|\n|\tHere are all your accounts.\t\t\t|')
                                 if len(all_acounts) > 0:
