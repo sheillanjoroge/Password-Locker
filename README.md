@@ -4,7 +4,7 @@ This is a CL application that allows users manage their passwords.
 ## By Sheilla Njoroge
 
 ## Description
-Maintaining passwords across applications is just a pain in the .With Password-locker you can have all your passwords stored for you in a vault and all you have to do is remember just one password. This is efficient for developers.
+Maintaining passwords is a big hustle.With Password-locker you can have all your passwords stored for you in a vault and all you have to do is remember just one password. This is efficient for developers.
 
 ## Setup/Installation Requirements
 Application requires python 3.6.
