@@ -1,4 +1,5 @@
 #!/usr/bin/env python3.6
+import sys
 from user import User
 from credentials import Credentials
 

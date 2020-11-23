@@ -1,3 +1,4 @@
+import csv, os, random
 class Credentials:
     '''
     Class that stores the credetials of the user
