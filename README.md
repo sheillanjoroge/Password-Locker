@@ -11,7 +11,8 @@ Application requires python 3.6.
 Clone the repo git clone https://github.com/sheillanjoroge/Password-Locker.git
 Navigate into the directory cd /Password-Locker
 Run the application python3.6 run.py
-Run Tests & Coverage
+
+#### Run Tests & Coverage
 Tests
 
 python -m unittest discover\
