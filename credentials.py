@@ -116,3 +116,50 @@ class Credentials:
             random_number = random.randrange(1, 26)
             password += alphabets[random_number]
         return password        
+
+    
+    @classmethod
+    def display_accounts(cls, email):
+        '''
+        Search the db and return a users accounts that they have created.
+        '''
+        file_exist = os.path.isfile(Credential.database)
+        all_user_accounts = []
+        if file_exist:
+            with open(Credential.database, 'r')as accounts_file:
+                all_accounts = csv.DictReader(accounts_file)
+                for account in all_accounts:
+                    if account['email'] == email:
+                        all_user_accounts.append(account)
+                return all_user_accounts
+        else:
+            return all_user_accounts
+
+    @classmethod
+    def delete_account(cls, email, account):
+        '''
+        Search the db and delete a users account
+        '''
+        db_exists = os.path.isfile(Credential.database)
+        if db_exists:
+            accounts_non_delete = []
+            with open(Credential.database, 'r')as cred_file:
+                cred_data = csv.DictReader(cred_file)
+                print(f'Account to delete is {account} and email id {email}')
+                for account in cred_data:
+                    if account['account'] is account and account['email'] is not email:
+                        print(f'Appended {account}')
+                        accounts_non_delete.append(account)
+            
+            with open(Credential.database, 'w')as cred_file_write:
+                fields = ['account', 'email', 'password']
+                non_delete_accounts = csv.DictWriter(cred_file_write, fieldnames=fields, lineterminator='\n')
+                non_delete_accounts.writeheader()
+                for account in accounts_non_delete:
+                    non_delete_accounts.writerow(account)
+
+
+                return True
+        
+        return False
+    
